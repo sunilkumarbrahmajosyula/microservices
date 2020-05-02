@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+.toolbar{
+  background-color: rgb(50, 115, 220);
+  color:white;
+}
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-field{
+  margin:0 20px;
+}
+
+.form-field h3{
+  margin:0;
+}
+
+.result-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.result-card mat-card{
+  width:400px;
+  padding:0;
+  border: 1px solid black;
+}
+.result-card mat-card div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-card mat-card div #value{
+  font-size: 20px;
+  color: rgb(50, 115, 220);
+  
+  margin:0;
+}
+
+.result-card mat-card div #currency{
+  font-size: 15px;
+  padding-right: 5px;
+  padding-left: 5px;
+  
+  margin:10px 0;
+}
+.result-card mat-card h4{
+  width:100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+  padding:8px;
+}
+.profile i {
+  padding-left:5px;
+}
+.profile img {
+  padding-left:5px;
+}

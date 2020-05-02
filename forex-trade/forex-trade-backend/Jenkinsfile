@@ -1,0 +1,23 @@
+pipeline {
+   agent any
+
+   tools {
+      // Install the Maven version configured as "M3" and add it to the path.
+      maven "maven"
+   }
+
+   stages {
+      stage('Build') {
+         steps {
+            // Get some code from a GitHub repository
+            checkout scm
+            // To run Maven on a Windows agent, use
+             bat "mvn -f RxR-forex-trade/RxR-forex-trade-backend/pom.xml clean install"			
+             bat "mvn -f RxR-forex-trade/RxR-forex-trade-backend/pom.xml compile"
+             bat "mvn -f RxR-forex-trade/RxR-forex-trade-backend/pom.xml spotbugs:spotbugs"
+         }
+
+         
+      }
+   }
+}

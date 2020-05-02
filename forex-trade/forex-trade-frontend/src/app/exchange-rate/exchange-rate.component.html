@@ -1,0 +1,50 @@
+<mat-toolbar class="toolbar">RxR-forex-trade</mat-toolbar>
+
+<mat-card>
+  <form [formGroup]="currencyForm" (ngSubmit)="onSubmit()" class="flex-container">
+    <div class="form-field">
+      <h3>Currency From</h3>
+      <mat-form-field>
+        <mat-select formControlName="currencyFrom">
+          <mat-option *ngFor=" let country of countries" [value]="country">{{country}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <mat-icon aria-hidden="false" aria-label="Example home icon">compare_arrows</mat-icon>
+
+    <div class="form-field">
+      <h3>Currency To</h3>
+      <mat-form-field>
+        <mat-select formControlName="currencyTo">
+          <mat-option *ngFor="let country of countries" [value]="country">{{country}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button type="submit" [disabled]="!currencyForm.valid" mat-raised-button color="primary">Convert</button>
+
+  </form>
+  <div class="result-card">
+    <mat-card>
+      <h4>Result:</h4>
+      <div>
+        <h5 id="currency" *ngIf="exchangeRate">{{currencyForm.get('currencyFrom').value}}</h5>
+        <mat-icon aria-hidden="false" aria-label="Example home icon" *ngIf="exchangeRate">compare_arrows</mat-icon>
+        <h5 id="currency" *ngIf="exchangeRate">{{currencyForm.get('currencyTo').value}}</h5>
+      </div>
+      <div *ngIf="exchangeRate">
+        <h5 id="value">{{exchangeRate.rates[currencyForm.get('currencyTo').value]}}</h5>
+      </div>
+    </mat-card>
+
+  </div>
+  <div>
+    <h3>{{date}}</h3>
+  </div>
+
+
+
+
+
+</mat-card>

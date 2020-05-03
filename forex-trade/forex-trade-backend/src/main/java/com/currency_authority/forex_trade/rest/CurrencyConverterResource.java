@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,21 +28,21 @@ public class CurrencyConverterResource {
 	@Autowired
 	private CurrencyConverterService service;
 
-	@RequestMapping("/all")
+	@GetMapping("/all")
 	public ExchangeRate getExchangeRates(@RequestParam(value = "currencyFrom", required = false) String currencyFrom)
 			throws IOException {
 		return service.getExchangeRates(currencyFrom);
 	}
 
-	@RequestMapping(value = "/test", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
-	public ExchangeRate testing() {
-		ExchangeRate rate = new ExchangeRate();
-		rate.setBase("xxxx");
-		rate.setTime_last_updated("sssss");
-		return rate;
-	}
+//	@RequestMapping(value = "/test", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+//	public ExchangeRate testing() {
+//		ExchangeRate rate = new ExchangeRate();
+//		rate.setBase("xxxx");
+//		rate.setTime_last_updated("sssss");
+//		return rate;
+//	}
 
-	@RequestMapping
+	@GetMapping("exchange-rate")
 	public ExchangeRate convertCurrency(@RequestParam(value = "currencyFrom", required = false) String currencyFrom,
 			@RequestParam(value = "currencyTo", required = false) String currencyTo) throws IOException {
 		return service.convertCurrency(currencyFrom, currencyTo);

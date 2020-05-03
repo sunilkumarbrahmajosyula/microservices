@@ -1,7 +1,7 @@
 # Spring Properties
 spring:
   application:
-     name: web-service
+     name: currency-service
 
 # Discovery Server Access
 eureka:
